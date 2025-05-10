@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finance Management App</title>
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <!-- LOGIN part -->
+  <div id="login-section" class="center">
+    <h2>Login</h2>
+    <select id="member-select">
+      <option value="">Select Member</option>
+      
+    </select>
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="login()">Login</button>
+    <p>Not a member? <a href="#" onclick="toggleSignup()">Sign up here</a></p>
+
+    <!-- SIGNUP part -->
+    <div id="signup-section" class="hidden">
+      <h3>Sign Up</h3>
+      <input type="text" id="new-member-name" placeholder="Enter name" />
+      <input type="password" id="new-member-password" placeholder="Enter password" />
+      <button onclick="signup()">Sign Up</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="hidden">
+    <div class="top-bar">
+      <h2>Welcome, <span id="user-name"></span></h2>
+      
+  <h3>Total Funds: Rs. <span id="total-funds">0.00</span></h3>
+   
+      <button onclick="logout()">Logout</button>
+    </div>
+
+
+    <div class="main-content">
+      
+      <div class="left-panel">
+        <div class="fund-section">
+          <h3>Manage Funds</h3>
+          <select id="action-type">
+            <option value="donate">Donate</option>
+            <option value="withdraw">Withdraw</option>
+          </select>
+          <input type="number" id="amount" placeholder="Enter amount" />
+          <input type="text" id="description" placeholder="Description (optional)" />
+          <button onclick="submitTransaction()">Submit</button>
+
+          <div class="history-section">
+            <h3>Transaction History</h3>
+            <ul id="history-list" class="transaction-list"></ul>
+          </div>
+          
+<div class="fund-summary">
+  <h3>Fund Summary</h3>
+  <p id="donatedAmount">Total Donated: Rs. 0.00</p>
+  <p id="withdrawnAmount">Total Withdrawn: Rs. 0.00</p>
+</div>
+
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="export-section">
+          <button onclick="exportToCSV()">Export Transactions to CSV</button>
+        </div>
+
+        <div id="chat-section">
+          <h3>Chat</h3>
+          <select id="chat-with-select" onchange="loadMessages(this.value)">
+            <option value="">-- Select user --</option>
+            <option value="Everyone">Everyone</option>
+          </select>
+          <div id="chat-box" style="height: 200px; overflow-y: auto; border: 1px solid #ccc; margin-top: 10px;"></div>
+          <input type="text" id="chat-message-input" placeholder="Type a message..." />
+          <button onclick="sendMessage()">Send</button>
+        </div>
+        
+        <div class="container">
+  <h2>Split Expense</h2>
+
+  <label>Total Withdrawal (Rs):</label>
+  <input type="number" id="totalAmount" placeholder="Enter amount..." required />
+
+  <label>Select Members to Split:</label>
+  <div id="memberCheckboxes">
+    <div id="split-members-list"></div>
+
+    
+  </div>
+
+  <button onclick="calculateSplit()">Calculate Split</button>
+
+  <div id="results"></div>
+</div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
